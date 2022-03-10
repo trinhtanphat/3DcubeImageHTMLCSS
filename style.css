@@ -1,0 +1,181 @@
+
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+
+.scene {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	height: 400px;
+	perspective: 800px;
+}
+
+.scene-1 {
+	pointer-events: none;
+	transform: translate(-50%, -50%) scale(0);
+	transition: all .5s;
+}
+
+.cube {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	transform: translateZ(-300px) rotateX(-10deg) translateY(50px);
+	transform-style: preserve-3d;
+	transition: transform 1s;
+	animation: rotate 10s linear infinite;
+}
+
+.scene:hover ~.scene-1 {
+	transform: translate(-50%, -50%) scale(0.5);
+}
+.scene:hover .front,
+.scene:hover ~.scene-1 .front {
+	transform: rotateY(0deg) translateZ(300px) scale(1.2);
+}
+.scene:hover .back,
+.scene:hover ~.scene-1 .back {
+	transform: rotateY(180deg) translateZ(300px) scale(1.2);
+}
+.scene:hover .left,
+.scene:hover ~.scene-1 .left {
+	transform: rotateY(-90deg) translateZ(300px) scale(1.2);
+}
+.scene:hover .right,
+.scene:hover ~.scene-1 .right {
+	transform: rotateY(90deg) translateZ(300px) scale(1.2);
+}
+
+.scene:hover .top,
+.scene:hover ~.scene-1 .top {
+	transform: rotateX(90deg) translateZ(300px) scale(1.2);
+}
+
+.scene:hover .bottom,
+.scene:hover ~.scene-1 .bottom {
+	transform: rotateX(-90deg) translateZ(300px) scale(1.2);
+}
+
+@keyframes rotate {
+	0% {
+		transform: translateZ(-300px) rotateX(-10deg) translateY(50px) rotateY(360deg);
+	}100% {
+		transform: translateZ(-300px) rotateX(-10deg) translateY(50px) rotateY(0deg);
+	}
+}
+
+.cube-face {
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	border: 1px solid;
+	transition: all .5s;
+}
+
+.front {
+	background: url(./images/pic1.jpg) center no-repeat;
+	background-size: cover;
+	transform: rotateY(0deg) translateZ(200px);
+	animation: front 10s linear infinite;
+}
+
+@keyframes front {
+	0%, 100% {
+		filter: opacity(.01);
+	} 25%, 75% {
+		filter: opacity(.5);
+	} 50% {
+		filter: opacity(1);
+	}
+}
+
+.back {
+	background: url(./images/pic2.jpg) center no-repeat;
+	background-size: cover;
+	transform: rotateY(180deg) translateZ(200px);
+	animation: back 10s linear infinite;
+}
+
+@keyframes back {
+	0%, 100% {
+		filter: opacity(1);
+	} 25%, 75% {
+		filter: opacity(.5);
+	} 50% {
+		filter: opacity(.01);
+	}
+}
+
+.left {
+	background: url(./images/pic3.jpg) center no-repeat;
+	background-size: cover;
+	transform: rotateY(-90deg) translateZ(200px);
+	animation: left 10s linear infinite;
+}
+
+@keyframes left {
+	0%, 100% {
+		filter: opacity(1);
+	} 25%, 75% {
+		filter: opacity(.5);
+	} 50% {
+		filter: opacity(.01);
+	}
+}
+
+.right {
+	background: url(./images/pic4.jpg) center no-repeat;
+	background-size: cover;
+	transform: rotateY(90deg) translateZ(200px);
+	animation:  right 10s linear infinite;
+}
+
+@keyframes right {
+	0%, 100% {
+		filter: opacity(1);
+	} 25%, 75% {
+		filter: opacity(.5);
+	} 50% {
+		filter: opacity(.01);
+	}
+}
+
+.bottom {
+	background: url(./images/pic5.jpg) center no-repeat;
+	background-size: cover;
+	transform: rotateX(-90deg) translateZ(200px);
+	animation: bottom 10s linear infinite;
+}
+
+@keyframes bottom {
+	0%, 100% {
+		filter: opacity(1);
+	} 25%, 75% {
+		filter: opacity(.5);
+	} 50% {
+		filter: opacity(.01);
+	}
+}
+
+.top {
+	background: url(./images/pic6.jpg) center no-repeat;
+	background-size: cover;
+	transform: rotateX(90deg) translateZ(200px);
+	animation: top 10s linear infinite;
+}
+
+@keyframes top {
+	0%, 100% {
+		filter: opacity(1);
+	} 25%, 75% {
+		filter: opacity(.5);
+	} 50% {
+		filter: opacity(.01);
+	}
+}
